@@ -21,64 +21,65 @@ public class CMPR113_HW1 extends JFrame{
     
     public CMPR113_HW1()
     {
-        
-        
-        setTitle("Input Form");
-        setSize(300, 200);
+        setTitle("Sum Numbers");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocation(600, getLocation().y + 300); //set x coordinate to 0 and y coordinate to 0
-        
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(5,2));
-        
-        JLabel messageLabel = new JLabel("Input Numbers separated by spaces: ");
-        multipleNumbersField = new JTextField(5);
-        
-        //adding our objects to the panel
-        panel.add(messageLabel);
-        panel.add(multipleNumbersField);
+        setSize(600,100);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(3,2));
+            
+        JLabel numberLabel = new JLabel("Enter your numbers separated by space: ");
+        multipleNumbersField = new JTextField();
         
         JButton button = new JButton("Submit");
         
-        button.addActionListener(new ActionListener(){
-            
-            public void actionPerformed(ActionEvent e){
+        
+        button.addActionListener(new ActionListener()   
+        {
+            public void actionPerformed(ActionEvent e)
+            {
                 
                 int n, sum = 0;
-                String s = JOptionPane.showInputDialog("Enter your numbers separated by space: ");
                 
                 
-                StringTokenizer str = new StringTokenizer(s, " ");
+                String numbers = multipleNumbersField.getText();
                 
-                while(str.hasMoreTokens()){
-                    String temp = str.nextToken();
-                    //convert string to an integer
+                StringTokenizer separators = new StringTokenizer(numbers, " ");
+                
+                while(separators.hasMoreTokens())
+                {
+                    String temp = separators.nextToken();
+                    
+                    //convert the string length into an integer
                     n = Integer.parseInt(temp);
                     
                     System.out.println(n);
                     
-                    sum = sum + n;
+                    //calulcate the numbers
+                    sum += n;
                     
                 }
                 
-                //you can add further logic or proecessing here
-                //clear the fields after submission
-                JOptionPane.showMessageDialog(panel, "Sum: " + sum);
-                
+                JOptionPane.showMessageDialog(null, "Sum: " + sum);
+                dispose();
             }
-        });
         
-        panel.add(button);
-        add(panel);
+        }
+        );
+                
+        
+        
+        add(numberLabel);
+        add(multipleNumbersField);
+        
+        //placeholder for layout purposes
+        add(new JLabel());
+        add(button);
     }
 
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                CMPR113_HW1 inputForm = new CMPR113_HW1();
-                inputForm.setVisible(true); //display the form
-            }
-        });
+        CMPR113_HW1 frame = new CMPR113_HW1();
+        frame.setVisible(true);
     }
         
   }
