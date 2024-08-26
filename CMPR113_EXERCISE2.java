@@ -146,6 +146,21 @@ public class Exercise2 extends JFrame {
                             
                             System.out.println("password: " + passwordEntered);
                             System.out.println("username: " + usernameEntered);
+                            
+                            if (usernameEntered.equals("Daniel") && passwordEntered.equals("Hernandez"))
+                            {
+                                System.out.println("over here");
+                                
+//                                JFrame thirdFrame = new JFrame("Credentials");
+//                                thirdFrame.setSize(300, 200);
+//                                thirdFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                                
+                                panel2.setVisible(false);
+//                                thirdFrame.setVisible(true);
+
+                                    JOptionPane.showMessageDialog(null, "Login Successfull");
+                                System.out.println("jklfdsljf");
+                            }
                         }
                     }
                     
